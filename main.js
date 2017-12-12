@@ -34,7 +34,19 @@ function createDeck() {
 
 }
 
+function createPlayers() {
 
+    players = new Array()
+    let playerOne = prompt('What is your name?')
+    console.log(playerOne)
+    const playerTwo = 'Dealer'
+    console.log(playerTwo)
+    players.push(playerOne, playerTwo)
+    console.log(players)
+
+}
+
+createPlayers()
 
 
 
