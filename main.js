@@ -90,6 +90,20 @@ function init() {
 
 }
 
+function deal() {
+    for(let i = 0; i < 2; i++){
+        for(let b = 0; b < players.length; b++){
+            let card = deck.pop()
+            players[b].hand.push(card)
+            renderCard(card, x)
+            updatePoints()
+        }
+    }
+    updateDeck()
+}
+
+
+
 
 
 
