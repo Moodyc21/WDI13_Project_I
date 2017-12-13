@@ -80,24 +80,31 @@ $(document).ready(function () {
             }
             document.getElementById('dOne').src = `img/${dealerHand[0].value}${dealerHand[0].suit}.png`;
             document.getElementById('dTwo').src = `img/${dealerHand[1].value}${dealerHand[1].suit}.png`;
+            document.getElementById('pOne').src = `img/${playerOneHand[0].value}${playerOneHand[0].suit}.png`;
+            document.getElementById('pTwo').src = `img/${playerOneHand[1].value}${playerOneHand[1].suit}.png`;
             
 
             let playerTotal = playerOneHand[0].weight + playerOneHand[1].weight
             console.log(playerTotal)
             let dealerTotal = dealerHand[0].weight + dealerHand[1].weight
+            $('.dealerScore').append(dealerTotal)
+            
+            setTimeout(function () {
             if (dealerTotal < 17) {
                 dealerHand.push(newDeck.shift())
-                let sum = dealerTotal + dealerHand[2].weight
-                if (sum > 21) {
+                let dealerTotal =+ dealerHand[2].weight
+                if (dealerTotal > 21) {
                     console.log('Dealer Busts!')
                 }
-                console.log(sum)
+                console.log(dealerTotal)
             } else if (dealerTotal = 21) {
                 console.log('21 Dealer makes BlackJack')
 
-            } else {
+            } else if(dealerTotal < 21) {
                 console.log(dealerTotal)
             }
+        }, 10000);
+        
             if (playerTotal < 21) {
                 $('#hit').on('click', function () {
                     playerOneHand.push(newDeck.shift())
