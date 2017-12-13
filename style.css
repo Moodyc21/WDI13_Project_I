@@ -66,7 +66,7 @@ img {
 .handD {
     display: flex;
     justify-content: center;
-    padding: 0 130px 0 0;
+    padding: 0 200px 0 0;
 }
 .handP {
     display: flex;
@@ -77,10 +77,46 @@ img {
     color: dodgerblue;
     padding: 100px 80px 0;
     font-size: 8em;
+    -webkit-text-stroke: 2px  white;
+    text-shadow:
+           3px 3px 0 #000,
+         -1px -1px 0 #000,  
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+           1px 1px 0 #000;
 
 }
 .dealerScore {
     color: dodgerblue;
     padding: 100px 80px 0;
     font-size: 8em;
+    -webkit-text-stroke: 2px white;
+    text-shadow:
+           3px 3px 0 #000,
+         -1px -1px 0 #000,  
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+           1px 1px 0 #000;
+}
+
+.status {
+    display: flex;
+    justify-content: center;
+    font-size: 5em;
+    color: dodgerblue;
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
+    text-shadow:
+           3px 3px 0 #000,
+         -1px -1px 0 #000,  
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+           1px 1px 0 #000;
+}
+
+.Dealer {
+    padding: 80px 0 0 0;
+}
+
+.player1 {
+    padding: 80px 0 0 0;
 }

@@ -85,22 +85,25 @@ $(document).ready(function () {
             
 
             let playerTotal = playerOneHand[0].weight + playerOneHand[1].weight
+            $('.playerScore').append(playerTotal)
             console.log(playerTotal)
+            
             let dealerTotal = dealerHand[0].weight + dealerHand[1].weight
             $('.dealerScore').append(dealerTotal)
+            console.log(dealerTotal)
             
             setTimeout(function () {
             if (dealerTotal < 17) {
                 dealerHand.push(newDeck.shift())
-                let dealerTotal =+ dealerHand[2].weight
-                if (dealerTotal > 21) {
-                    console.log('Dealer Busts!')
+                let sum = dealerTotal + dealerHand[2].weight
+                if (sum > 21) {
+                    $('.status').append('Dealer Busts!')
                 }
                 console.log(dealerTotal)
-            } else if (dealerTotal = 21) {
-                console.log('21 Dealer makes BlackJack')
+            } else if (sum= 21) {
+                $('.status').append('21 Dealer makes BlackJack')
 
-            } else if(dealerTotal < 21) {
+            } else if(sum < 21) {
                 console.log(dealerTotal)
             }
         }, 10000);
@@ -113,25 +116,25 @@ $(document).ready(function () {
                     console.log(playerSum)
 
                     if (playerSum > 21) {
-                        console.log('You Busted!')
+                        $('.status').append('You Busted!')
                     } else if (playerSum == 21) {
-                        console.log('21 You Win!')
+                        $('.status').append('21 You Win!')
                     }
 
                 })
 
             } else if (playerTotal = 21) {
-                console.log('21 BlackJack! You win!')
+                $('.status').append('21 BlackJack! You win!')
             } else if (playerTotal > 21) {
-                console.log('You Busted!')
+                c$('.status').append('You Busted!')
 
             }
             $('#stay').on('click', function () {
                 if (playerTotal > dealerTotal) {
-                    console.log('You win!')
+                    $('.status').append('You win!')
 
                 } else if (playerTotal < dealerTotal) {
-                    console.log('You lose!')
+                    $('.status').append('You lose!')
                 }
 
             })
