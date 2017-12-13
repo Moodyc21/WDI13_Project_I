@@ -1,0 +1,71 @@
+body {
+    display: flex;
+    justify-content: center;
+    background-image: url('https://i.imgur.com/F10DK1t.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+h1 {
+    color: ghostwhite;
+    font-size: 10em;
+     -webkit-text-stroke: 4px red;
+     text-shadow:
+            3px 3px 0 #000,
+          -1px -1px 0 #000,  
+           1px -1px 0 #000,
+           -1px 1px 0 #000,
+            1px 1px 0 #000;
+     }
+
+
+h2 {
+    color: ghostwhite;
+    font-size: 5em;
+    -webkit-text-stroke: 2px red;
+    text-shadow:
+           3px 3px 0 #000,
+         -1px -1px 0 #000,  
+          1px -1px 0 #000,
+          -1px 1px 0 #000,
+           1px 1px 0 #000;
+}
+
+img {
+    max-height: 250px;
+
+}
+
+.buttons {
+    padding: 20px 75px;
+    font-size
+}
+
+#Deal {
+    padding: 20px 75px;
+}
+
+#hit {
+    padding: 20px 75px;
+}
+
+#stay {
+    padding: 20px 75px;
+}
+
+#restart{
+    padding: 20px 75px;
+}
+
+.handD {
+    display: flex;
+    justify-content: center;
+    padding: 0 130px 0 0;
+}
+.handP {
+    display: flex;
+    justify-content: center;
+    padding: 0 200px 0 0;
+}

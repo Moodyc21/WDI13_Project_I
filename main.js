@@ -39,8 +39,9 @@ $(document).ready(function () {
 
     function createPlayers() {
 
-        players = new Array()
+        players = []
         let playerOne = prompt('What is your name?')
+        $('.player1').append( '->' + playerOne + '<-')
         console.log(playerOne)
         const playerTwo = 'Dealer'
         console.log(playerTwo)
