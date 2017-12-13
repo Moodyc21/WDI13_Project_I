@@ -41,7 +41,7 @@ $(document).ready(function () {
 
         players = []
         let playerOne = prompt('What is your name?')
-        $('.player1').append( '->' + playerOne + '<-')
+        $('.player1').append( '>' + playerOne + '<')
         console.log(playerOne)
         const playerTwo = 'Dealer'
         console.log(playerTwo)
@@ -63,19 +63,25 @@ $(document).ready(function () {
     shuffleDeck()
 
 
-
     $('#Deal').on('click', function () {
         
 
             let playerOneHand = []
             let dealerHand = []
+            
             for (let i = 0; i < 2; i++) {
                 let playerHandResult = playerOneHand.push(newDeck.shift())
                 console.log(playerOneHand)
                 let dealerHandResult = dealerHand.push(newDeck.shift())
+                
+                
                 console.log(dealerHand)
 
             }
+            document.getElementById('dOne').src = `img/${dealerHand[0].value}${dealerHand[0].suit}.png`;
+            document.getElementById('dTwo').src = `img/${dealerHand[1].value}${dealerHand[1].suit}.png`;
+            
+
             let playerTotal = playerOneHand[0].weight + playerOneHand[1].weight
             console.log(playerTotal)
             let dealerTotal = dealerHand[0].weight + dealerHand[1].weight
