@@ -1,106 +1,141 @@
-$(document).ready(function(){
+$(document).ready(function () {
 
 
 
 
-const suits = ['Spades', 'Hearts', 'Diamonds', 'Clubs']
-const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-let deck = new Array()
-let players = new Array()
-let currentPlayer = 0
+    const suits = ['S', 'H', 'D', 'C']
+    const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
+    let deck = new Array()
+    let players = new Array()
+    let currentPlayer = 0
+    let newDeck = []
 
 
-function createDeck() {
+    function createDeck() {
 
-    deck = new Array()
-    for(let i = 0; i < values.length; i++){
-        
-        for(let a = 0; a < suits.length; a++){
-           
-            let cardValue = parseInt(value[i]);
-           
-            if(values[i] == 'J' || values[i] == 'Q' || values[i] == 'K')
-           
-            cardValue = 10
+        deck = new Array()
+        for (let i = 0; i < values.length; i++) {
 
-            if(values[i] == 'A')
+            for (let a = 0; a < suits.length; a++) {
 
-            cardValue = 11
+                let weight = parseInt(values[i]);
 
-            const card = {Value: values[i], Suit: suits[a], Weight: weight}
-            deck.push(card)
+                if (values[i] == 'J' || values[i] == 'Q' || values[i] == 'K')
+
+                    weight = 10
+
+                if (values[i] == 'A')
+
+                    weight = 11
+
+                const card = { value: values[i], suit: suits[a], weight: weight }
+                deck.push(card)
+            }
         }
+        console.log(deck)
+        return deck
     }
-
-}
-
-function createPlayers() {
-
-    players = new Array()
-    let playerOne = prompt('What is your name?')
-    console.log(playerOne)
-    const playerTwo = 'Dealer'
-    console.log(playerTwo)
-    players.push(playerOne, playerTwo)
-    console.log(players)
-
-}
-createPlayers()
-
-function playerUI() {
-    $('.player').innerHTML = ''
-    for(let i = 0; i < players.length; i++){
-        let playerDiv =  document.createElement('div')
-        let playerDivId = document.createElement('div')
-        let handDiv = document.createElement('div')
-        let pointsDiv = document.createElement('div')
-
-        pointsDiv.classname = 'points'
-        pointsDiv.id = 'points_' + i
-        playerDiv.id = 'player_' + i
-        playerDiv.classname = 'player'
-        handDiv.id = 'hand_' + i
-
-        playerDivId.innerHTML = players[i].ID
-        playerDiv.appendChild(playerDivId)
-        playerDiv.appendChild(handDiv)
-        playerDiv.appendChild(pointsDiv)
-        $('.players').appendChild(playerDiv)
-
-
-    }
-}
-
-function shuffleDeck () {
-    for( let i = 0; i < 500; i++) {
-        let stateOne = Math.floor(Math.random() * deck.length)
-        let stateTwo = Math.floor(Math.random() * deck.length)
-        let tmp = deck[stateOne]
-    }
-}
-
-function init() {
-    currentPlayer = 0
     createDeck()
-    shuffle()
-    createPlayers()
-    playerUI()
-    dealHands()
-    $('#player_' + currentplayer).classlist.add('active')    
 
-}
+    function createPlayers() {
 
-function deal() {
-    for(let i = 0; i < 2; i++){
-        for(let b = 0; b < players.length; b++){
-            let card = deck.pop()
-            players[b].hand.push(card)
-            renderCard(card, x)
-            updatePoints()
-        }
+        players = new Array()
+        let playerOne = prompt('What is your name?')
+        console.log(playerOne)
+        const playerTwo = 'Dealer'
+        console.log(playerTwo)
+        players.push(playerOne, playerTwo)
+        console.log(players)
+
     }
-    updateDeck()
-}
+    createPlayers()
+
+    function shuffleDeck() {
+        for (let i = 0; i < deck.length; i++) {
+            let shuffle = newDeck.push(deck[Math.floor(Math.random() * 52)])
+            console.log(newDeck)
+        }
+
+    }
+
+
+    shuffleDeck()
+
+
+
+    $('#Deal').on('click', function () {
+        
+
+            let playerOneHand = []
+            let dealerHand = []
+            for (let i = 0; i < 2; i++) {
+                let playerHandResult = playerOneHand.push(newDeck.shift())
+                console.log(playerOneHand)
+                let dealerHandResult = dealerHand.push(newDeck.shift())
+                console.log(dealerHand)
+
+            }
+            let playerTotal = playerOneHand[0].weight + playerOneHand[1].weight
+            console.log(playerTotal)
+            let dealerTotal = dealerHand[0].weight + dealerHand[1].weight
+            if (dealerTotal < 17) {
+                dealerHand.push(newDeck.shift())
+                let sum = dealerTotal + dealerHand[2].weight
+                if (sum > 21) {
+                    console.log('Dealer Busts!')
+                }
+                console.log(sum)
+            } else if (dealerTotal = 21) {
+                console.log('21 Dealer makes BlackJack')
+
+            } else {
+                console.log(dealerTotal)
+            }
+            if (playerTotal < 21) {
+                $('#hit').on('click', function () {
+                    playerOneHand.push(newDeck.shift())
+                    console.log(playerOneHand)
+                    let playerSum = playerTotal + playerOneHand[2].weight
+                    console.log(playerSum)
+
+                    if (playerSum > 21) {
+                        console.log('You Busted!')
+                    } else if (playerSum == 21) {
+                        console.log('21 You Win!')
+                    }
+
+                })
+
+            } else if (playerTotal = 21) {
+                console.log('21 BlackJack! You win!')
+            } else if (playerTotal > 21) {
+                console.log('You Busted!')
+
+            }
+            $('#stay').on('click', function () {
+                if (playerTotal > dealerTotal) {
+                    console.log('You win!')
+
+                } else if (playerTotal < dealerTotal) {
+                    console.log('You lose!')
+                }
+
+            })
+
+
+
+        
+
+
+
+    });
+
+
+
+
+
+
+
 
 
 
@@ -109,5 +144,3 @@ function deal() {
 
 
 });
-
-
