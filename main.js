@@ -40,7 +40,7 @@ $(document).ready(function () {
     function createPlayers() {
 
         players = []
-        let playerOne = prompt('What is your name?')
+        let playerOne = prompt('The game is BlackJack partner and your playing me, the Dealer. The closest one to 21 wins. If you go over you automatically lose. Sounds easy right? Good! What is your name?')
         $('.player1').append('>' + playerOne + '<')
         console.log(playerOne)
         const playerTwo = 'Dealer'
@@ -129,11 +129,11 @@ $(document).ready(function () {
         setTimeout(function () {
             if (dealerTotal < 17) {
                 dealerHand.push(newDeck.shift())
-                setTimeout(function () {
-                    $('.container').append(`<img id='dThree' src='img/${dealerHand[2].value}${dealerHand[2].suit}.png' alt='3rd card'>`)
-                    let sum = dealerTotal + dealerHand[2].weight
-                    $('.dealerScore').text(sum)
-                }, 1000)
+
+                $('.container').append(`<img id='dThree' src='img/${dealerHand[2].value}${dealerHand[2].suit}.png' alt='3rd card'>`)
+                let sum = dealerTotal + dealerHand[2].weight
+                $('.dealerScore').text(sum)
+
                 if (sum > 21) {
                     $('.status').append('Dealer Busts!')
                 } else if (sum == 21) {
