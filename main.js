@@ -19,19 +19,12 @@ $(document).ready(function () {
 
         deck = new Array()
         for (let i = 0; i < values.length; i++) {
-
             for (let a = 0; a < suits.length; a++) {
-
                 let weight = parseInt(values[i]);
-
                 if (values[i] == 'J' || values[i] == 'Q' || values[i] == 'K')
-
                     weight = 10
-
                 if (values[i] == 'A')
-
                     weight = 11
-
                 const card = { value: values[i], suit: suits[a], weight: weight }
                 deck.push(card)
             }
@@ -56,33 +49,24 @@ $(document).ready(function () {
     }
     createPlayers()
 
-
-
-
-
     function shuffleDeck() {
         for (let i = 0; i < deck.length; i++) {
             let shuffle = newDeck.push(deck[Math.floor(Math.random() * 52)])
             console.log(newDeck)
         }
-
     }
 
-   shuffleDeck()
-
+    shuffleDeck()
 
     $('#Deal').on('click', function () {
 
         let playerOneHand = []
         let dealerHand = []
 
-
         for (let i = 0; i < 2; i++) {
             let playerHandResult = playerOneHand.push(newDeck.shift())
             console.log(playerOneHand)
             let dealerHandResult = dealerHand.push(newDeck.shift())
-
-
             console.log(dealerHand)
 
         }
@@ -91,7 +75,6 @@ $(document).ready(function () {
         document.getElementById('pOne').src = `img/${playerOneHand[0].value}${playerOneHand[0].suit}.png`;
         document.getElementById('pTwo').src = `img/${playerOneHand[1].value}${playerOneHand[1].suit}.png`;
 
-
         let playerTotal = playerOneHand[0].weight + playerOneHand[1].weight
         $('.playerScore').append(playerTotal)
         console.log(playerTotal)
@@ -99,7 +82,6 @@ $(document).ready(function () {
         let dealerTotal = dealerHand[0].weight + dealerHand[1].weight
         $('.dealerScore').append(dealerTotal)
         console.log(dealerTotal)
-
 
         if (playerTotal < 21) {
             $('#hit').on('click', function () {
@@ -115,7 +97,7 @@ $(document).ready(function () {
                     $('.status').append('You Busted!')
                 } else if (playerSum == 21) {
                     $('.status').append('21 You Win!')
-                } else if (playerSum < 21) {
+                } else if (playerSum < 17) {
 
                     setTimeout(function () {
                         playerOneHand.push(newDeck.shift())
@@ -136,7 +118,9 @@ $(document).ready(function () {
             $('.status').append('You Busted!')
 
         }
-        setTimeout(function () {
+
+        $('#stay').on('click', function () {
+
             if (dealerTotal < 17) {
                 dealerHand.push(newDeck.shift())
 
@@ -161,9 +145,7 @@ $(document).ready(function () {
             } else if (dealerTotal > 21) {
                 $('.status').append('Dealer Busts!')
             }
-        }, 7000);
 
-        $('#stay').on('click', function () {
             let dScore = +$('.dealerScore').text()
             let pScore = +$('.playerScore').text()
 
@@ -178,16 +160,10 @@ $(document).ready(function () {
 
         })
 
-
-
-
-
-
-
-    });
+    })
 
     $('#restart').on('click', function () {
-        
+
         shuffleDeck()
 
         $('.dealerScore').text('')
@@ -200,8 +176,6 @@ $(document).ready(function () {
 
         playerOneHand.length = 0
         dealerHand.length = 0
-
-        
 
     })
 
