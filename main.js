@@ -41,7 +41,7 @@ $(document).ready(function () {
 
         players = []
         let playerOne = prompt('What is your name?')
-        $('.player1').append( '>' + playerOne + '<')
+        $('.player1').append('>' + playerOne + '<')
         console.log(playerOne)
         const playerTwo = 'Dealer'
         console.log(playerTwo)
@@ -64,84 +64,88 @@ $(document).ready(function () {
 
 
     $('#Deal').on('click', function () {
-        
 
-            let playerOneHand = []
-            let dealerHand = []
-            
-            for (let i = 0; i < 2; i++) {
-                let playerHandResult = playerOneHand.push(newDeck.shift())
+
+        let playerOneHand = []
+        let dealerHand = []
+
+        for (let i = 0; i < 2; i++) {
+            let playerHandResult = playerOneHand.push(newDeck.shift())
+            console.log(playerOneHand)
+            let dealerHandResult = dealerHand.push(newDeck.shift())
+
+
+            console.log(dealerHand)
+
+        }
+        document.getElementById('dOne').src = `img/${dealerHand[0].value}${dealerHand[0].suit}.png`;
+        document.getElementById('dTwo').src = `img/${dealerHand[1].value}${dealerHand[1].suit}.png`;
+        document.getElementById('pOne').src = `img/${playerOneHand[0].value}${playerOneHand[0].suit}.png`;
+        document.getElementById('pTwo').src = `img/${playerOneHand[1].value}${playerOneHand[1].suit}.png`;
+
+
+        let playerTotal = playerOneHand[0].weight + playerOneHand[1].weight
+        $('.playerScore').append(playerTotal)
+        console.log(playerTotal)
+
+        let dealerTotal = dealerHand[0].weight + dealerHand[1].weight
+        $('.dealerScore').append(dealerTotal)
+        console.log(dealerTotal)
+
+
+        if (playerTotal < 21) {
+            $('#hit').on('click', function () {
+                playerOneHand.push(newDeck.shift())
                 console.log(playerOneHand)
-                let dealerHandResult = dealerHand.push(newDeck.shift())
+                let playerSum = playerTotal + playerOneHand[2].weight
+                $('.playerScore').text(playerSum)
                 
-                
-                console.log(dealerHand)
+                console.log(playerSum)
 
-            }
-            document.getElementById('dOne').src = `img/${dealerHand[0].value}${dealerHand[0].suit}.png`;
-            document.getElementById('dTwo').src = `img/${dealerHand[1].value}${dealerHand[1].suit}.png`;
-            document.getElementById('pOne').src = `img/${playerOneHand[0].value}${playerOneHand[0].suit}.png`;
-            document.getElementById('pTwo').src = `img/${playerOneHand[1].value}${playerOneHand[1].suit}.png`;
-            
-
-            let playerTotal = playerOneHand[0].weight + playerOneHand[1].weight
-            $('.playerScore').append(playerTotal)
-            console.log(playerTotal)
-            
-            let dealerTotal = dealerHand[0].weight + dealerHand[1].weight
-            $('.dealerScore').append(dealerTotal)
-            console.log(dealerTotal)
-            
-            setTimeout(function () {
-            if (dealerTotal < 17) {
-                dealerHand.push(newDeck.shift())
-                let sum = dealerTotal + dealerHand[2].weight
-                if (sum > 21) {
-                    $('.status').append('Dealer Busts!')
-                }
-                console.log(dealerTotal)
-            } else if (sum= 21) {
-                $('.status').append('21 Dealer makes BlackJack')
-
-            } else if(sum < 21) {
-                console.log(dealerTotal)
-            }
-        }, 10000);
-        
-            if (playerTotal < 21) {
-                $('#hit').on('click', function () {
-                    playerOneHand.push(newDeck.shift())
-                    console.log(playerOneHand)
-                    let playerSum = playerTotal + playerOneHand[2].weight
-                    console.log(playerSum)
-
-                    if (playerSum > 21) {
-                        $('.status').append('You Busted!')
-                    } else if (playerSum == 21) {
-                        $('.status').append('21 You Win!')
-                    }
-
-                })
-
-            } else if (playerTotal = 21) {
-                $('.status').append('21 BlackJack! You win!')
-            } else if (playerTotal > 21) {
-                c$('.status').append('You Busted!')
-
-            }
-            $('#stay').on('click', function () {
-                if (playerTotal > dealerTotal) {
-                    $('.status').append('You win!')
-
-                } else if (playerTotal < dealerTotal) {
-                    $('.status').append('You lose!')
+                if (playerSum > 21) {
+                    $('.status').append('You Busted!')
+                } else if (playerSum == 21) {
+                    $('.status').append('21 You Win!')
                 }
 
             })
 
+        } else if (playerTotal = 21) {
+            $('.status').append('21 BlackJack! You win!')
+        } else if (playerTotal > 21) {
+            c$('.status').append('You Busted!')
+
+        }
+        setTimeout(function () {
+            if (dealerTotal < 17) {
+                dealerHand.push(newDeck.shift())
+                let sum = dealerTotal + dealerHand[2].weight
+                $('.dealerScore').text(sum)
+                if (sum > 21) {
+                    $('.status').append('Dealer Busts!')
+                }
+                console.log(dealerTotal)
+            } else if (sum = 21) {
+                $('.status').append('21 Dealer makes BlackJack')
+
+            } else if (sum < 21) {
+                console.log(dealerTotal)
+            }
+        }, 10000);
+
+        $('#stay').on('click', function () {
+            if (playerTotal > dealerTotal) {
+                $('.status').append('You win!')
+
+            } else if (playerTotal < dealerTotal) {
+                $('.status').append('You lose!')
+            }
+
+        })
 
 
-        
+
+
 
 
 

@@ -103,7 +103,7 @@ img {
     display: flex;
     justify-content: center;
     font-size: 5em;
-    color: dodgerblue;
+    color: goldenrod;
     -webkit-text-stroke: 2px rgb(255, 255, 255);
     text-shadow:
            3px 3px 0 #000,
