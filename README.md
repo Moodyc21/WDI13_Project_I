@@ -19,7 +19,7 @@ http://epic-saha-3a665a.bitballoon.com/
 
 
 
-##Technologies
+## Technologies
 
 - I used bootstrap for my button collection
 - I used JQuery and javascript to manipulate the DOM
@@ -27,7 +27,7 @@ http://epic-saha-3a665a.bitballoon.com/
 - I downloaded card images from BoiseCodeWorks Github to render real BlackJack cards
 - I used setTimeout functions to control flow.
 
-##Version 2
+## Version 2
 
      I would like to update this application in version 2 to support a chip count and betting options. Also, adding more animations and sound effects would really polish this application. In version 2 the player would have a better experience with better responsiveness on different platforms. I would also like to add the option for avatars as well as collecting the users name. Another idea would be to setup up a data collector so each hand played could be reviewed and odds could be determined at the time of play.
 
