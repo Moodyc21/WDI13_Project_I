@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
-    $('h1').animate({ fontSize: '16em'}, 4000)
-    $('h1').animate({ fontSize: '10em'}, 1000)
+    $('h1').animate({ fontSize: '16em' }, 4000)
+    $('h1').animate({ fontSize: '10em' }, 1000)
 
 
 
@@ -56,6 +56,10 @@ $(document).ready(function () {
     }
     createPlayers()
 
+
+
+
+
     function shuffleDeck() {
         for (let i = 0; i < deck.length; i++) {
             let shuffle = newDeck.push(deck[Math.floor(Math.random() * 52)])
@@ -64,15 +68,14 @@ $(document).ready(function () {
 
     }
 
-
-    shuffleDeck()
+   shuffleDeck()
 
 
     $('#Deal').on('click', function () {
 
-
         let playerOneHand = []
         let dealerHand = []
+
 
         for (let i = 0; i < 2; i++) {
             let playerHandResult = playerOneHand.push(newDeck.shift())
@@ -182,6 +185,25 @@ $(document).ready(function () {
 
 
     });
+
+    $('#restart').on('click', function () {
+        
+        shuffleDeck()
+
+        $('.dealerScore').text('')
+        $('.playerScore').text('')
+        $('#dThree').remove()
+        $('#dFour').remove()
+        $('#pThree').remove()
+        $('#pFour').remove()
+        $('.status').text('')
+
+        playerOneHand.length = 0
+        dealerHand.length = 0
+
+        
+
+    })
 
 
 
