@@ -108,14 +108,16 @@ $(document).ready(function () {
                 } else if (playerSum == 21) {
                     $('.status').append('21 You Win!')
                 } else if (playerSum < 21) {
-                    $('#hit').on('click', function () {
+
+                    setTimeout(function () {
                         playerOneHand.push(newDeck.shift())
                         $('.contain').append(`<img id='pFour' src='img/${playerOneHand[3].value}${playerOneHand[3].suit}.png' alt='4th Card'>`)
                         console.log(playerOneHand)
                         let playerSum2 = playerSum + playerOneHand[3].weight
                         $('.playerScore').text(playerSum2)
+                    }, 2000)
 
-                    });
+
                 }
 
             })
@@ -123,7 +125,7 @@ $(document).ready(function () {
         } else if (playerTotal = 21) {
             $('.status').append('21 BlackJack! You win!')
         } else if (playerTotal > 21) {
-            c$('.status').append('You Busted!')
+            $('.status').append('You Busted!')
 
         }
         setTimeout(function () {
@@ -162,7 +164,7 @@ $(document).ready(function () {
 
             } else if (pScore < dScore) {
                 $('.status').append('You lose!')
-            } else if (pScore == dScore) {
+            } else if (pScore = dScore) {
                 $('.status').append('Wash!')
             }
 
