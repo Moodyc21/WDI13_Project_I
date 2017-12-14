@@ -96,6 +96,7 @@ $(document).ready(function () {
         if (playerTotal < 21) {
             $('#hit').on('click', function () {
                 playerOneHand.push(newDeck.shift())
+                $('.contain').append(`<img id='pThree' src='img/${playerOneHand[2].value}${playerOneHand[2].suit}.png' alt='3rd Card'>`)
                 console.log(playerOneHand)
                 let playerSum = playerTotal + playerOneHand[2].weight
                 $('.playerScore').text(playerSum)
@@ -119,6 +120,7 @@ $(document).ready(function () {
         setTimeout(function () {
             if (dealerTotal < 17) {
                 dealerHand.push(newDeck.shift())
+                $('.container').append(`<img id='dThree' src='img/${dealerHand[2].value}${dealerHand[2].suit}.png' alt='3rd card'>`)
                 let sum = dealerTotal + dealerHand[2].weight
                 $('.dealerScore').text(sum)
                 if (sum > 21) {
