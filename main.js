@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    $('h1').animate({ fontSize: '16em'}, 4000)
+    $('h1').animate({ fontSize: '10em'}, 1000)
+
+
 
 
 
@@ -47,6 +51,7 @@ $(document).ready(function () {
         console.log(playerTwo)
         players.push(playerOne, playerTwo)
         console.log(players)
+
 
     }
     createPlayers()
