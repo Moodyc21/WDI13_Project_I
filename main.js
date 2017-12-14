@@ -125,15 +125,20 @@ $(document).ready(function () {
                 $('.dealerScore').text(sum)
                 if (sum > 21) {
                     $('.status').append('Dealer Busts!')
-                }
-                console.log(dealerTotal)
-            } else if (sum = 21) {
-                $('.status').append('21 Dealer makes BlackJack')
-
-            } else if (sum < 21) {
-                console.log(dealerTotal)
+                } else if (sum == 21) {
+                    $('.status').append('Dealer Makes BlackJack!')
+                } else if (sum < 17) {
+                    dealerHand.push(newDeck.shift())
+                    $('.container').append(`<img id='dFour' src='img/${dealerHand[3].value}${dealerHand[3].suit}.png' alt='4th card'>`)
+                    let sum2 = sum + dealerHand[3].weight
+                    $('.dealerScore').text(sum2) 
+                } 
+            } else if (dealerTotal == 21) {
+                $('.status').append('Dealer Makes BlackJack!')
+            } else if (dealerTotal > 21) {
+                $('.status').append('Dealer Busts!')
             }
-        }, 10000);
+        }, 7000);
 
         $('#stay').on('click', function () {
             if (playerTotal > dealerTotal) {
@@ -153,7 +158,7 @@ $(document).ready(function () {
 
     });
 
-
+    console.log(dealerTotal)
 
 
 
