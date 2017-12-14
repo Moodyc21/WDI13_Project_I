@@ -149,12 +149,12 @@ $(document).ready(function () {
             let dScore = +$('.dealerScore').text()
             let pScore = +$('.playerScore').text()
 
-            if (pScore > dScore) {
+            if (pScore > dScore && pScore <= 21) {
                 $('.status').append('You win!')
 
-            } else if (pScore < dScore) {
+            } else if (pScore < dScore && dScore <= 21) {
                 $('.status').append('You lose!')
-            } else if (pScore = dScore) {
+            } else if (pScore == dScore) {
                 $('.status').append('Wash!')
             }
 
