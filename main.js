@@ -141,11 +141,16 @@ $(document).ready(function () {
         }, 7000);
 
         $('#stay').on('click', function () {
-            if (playerTotal > dealerTotal) {
+            let dScore = +$('.dealerScore').text()
+            let pScore = +$('.playerScore').text()
+            
+            if (pScore > dScore ) {
                 $('.status').append('You win!')
 
-            } else if (playerTotal < dealerTotal) {
+            } else if (pScore < dScore) {
                 $('.status').append('You lose!')
+            } else if (pScore == dScore){
+                $('.status').append('Wash!')
             }
 
         })
@@ -158,7 +163,7 @@ $(document).ready(function () {
 
     });
 
-    console.log(dealerTotal)
+    
 
 
 
