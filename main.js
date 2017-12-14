@@ -100,13 +100,23 @@ $(document).ready(function () {
                 console.log(playerOneHand)
                 let playerSum = playerTotal + playerOneHand[2].weight
                 $('.playerScore').text(playerSum)
-                
+
                 console.log(playerSum)
 
                 if (playerSum > 21) {
                     $('.status').append('You Busted!')
                 } else if (playerSum == 21) {
                     $('.status').append('21 You Win!')
+                } else if (playerSum < 21) {
+                    $('#hit').on('click', function () {
+                        playerOneHand.push(newDeck.shift())
+                        $('.contain').append(`<img id='pFour' src='img/${playerOneHand[3].value}${playerOneHand[3].suit}.png' alt='4th Card'>`)
+                        console.log(playerOneHand)
+                        let playerSum2 = playerSum + playerOneHand[3].weight
+                        $('.playerScore').text(playerSum2)
+                        return playerSum2
+
+                    });
                 }
 
             })
@@ -131,8 +141,8 @@ $(document).ready(function () {
                     dealerHand.push(newDeck.shift())
                     $('.container').append(`<img id='dFour' src='img/${dealerHand[3].value}${dealerHand[3].suit}.png' alt='4th card'>`)
                     let sum2 = sum + dealerHand[3].weight
-                    $('.dealerScore').text(sum2) 
-                } 
+                    $('.dealerScore').text(sum2)
+                }
             } else if (dealerTotal == 21) {
                 $('.status').append('Dealer Makes BlackJack!')
             } else if (dealerTotal > 21) {
@@ -143,13 +153,13 @@ $(document).ready(function () {
         $('#stay').on('click', function () {
             let dScore = +$('.dealerScore').text()
             let pScore = +$('.playerScore').text()
-            
-            if (pScore > dScore ) {
+
+            if (pScore > dScore) {
                 $('.status').append('You win!')
 
             } else if (pScore < dScore) {
                 $('.status').append('You lose!')
-            } else if (pScore == dScore){
+            } else if (pScore == dScore) {
                 $('.status').append('Wash!')
             }
 
@@ -163,7 +173,7 @@ $(document).ready(function () {
 
     });
 
-    
+
 
 
 
