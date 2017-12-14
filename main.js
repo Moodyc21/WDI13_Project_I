@@ -114,7 +114,6 @@ $(document).ready(function () {
                         console.log(playerOneHand)
                         let playerSum2 = playerSum + playerOneHand[3].weight
                         $('.playerScore').text(playerSum2)
-                        return playerSum2
 
                     });
                 }
@@ -130,18 +129,22 @@ $(document).ready(function () {
         setTimeout(function () {
             if (dealerTotal < 17) {
                 dealerHand.push(newDeck.shift())
-                $('.container').append(`<img id='dThree' src='img/${dealerHand[2].value}${dealerHand[2].suit}.png' alt='3rd card'>`)
-                let sum = dealerTotal + dealerHand[2].weight
-                $('.dealerScore').text(sum)
+                setTimeout(function () {
+                    $('.container').append(`<img id='dThree' src='img/${dealerHand[2].value}${dealerHand[2].suit}.png' alt='3rd card'>`)
+                    let sum = dealerTotal + dealerHand[2].weight
+                    $('.dealerScore').text(sum)
+                }, 1000)
                 if (sum > 21) {
                     $('.status').append('Dealer Busts!')
                 } else if (sum == 21) {
                     $('.status').append('Dealer Makes BlackJack!')
                 } else if (sum < 17) {
                     dealerHand.push(newDeck.shift())
-                    $('.container').append(`<img id='dFour' src='img/${dealerHand[3].value}${dealerHand[3].suit}.png' alt='4th card'>`)
-                    let sum2 = sum + dealerHand[3].weight
-                    $('.dealerScore').text(sum2)
+                    setTimeout(function () {
+                        $('.container').append(`<img id='dFour' src='img/${dealerHand[3].value}${dealerHand[3].suit}.png' alt='4th card'>`)
+                        let sum2 = sum + dealerHand[3].weight
+                        $('.dealerScore').text(sum2)
+                    }, 2000)
                 }
             } else if (dealerTotal == 21) {
                 $('.status').append('Dealer Makes BlackJack!')
