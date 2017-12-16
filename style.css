@@ -133,3 +133,13 @@ img {
     display: flex;
     justify-content: center;
 }
+
+#scoreBoard {
+    display: inline;
+    color: ghostwhite;
+    font-size: 6em;
+    background-color: black;
+    
+
+
+}
